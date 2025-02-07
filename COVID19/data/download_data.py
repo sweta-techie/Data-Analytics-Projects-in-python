@@ -42,7 +42,7 @@ def download_countries():
 
     delete_directory(path=path)
 
-    req = requests.get( url=url)
+    req = requests.get( url=url, timeout=60)
     content = req.content
     with open(f'{path}/countries.csv', 'wb') as csv:
         csv.write(content)
