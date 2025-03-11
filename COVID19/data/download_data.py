@@ -1,9 +1,8 @@
 from shutil import rmtree
-
-import requests
 import wbdata
 from git import Repo
 from time import sleep
+from security import safe_requests
 
 def delete_directory(path):
     """
@@ -42,7 +41,7 @@ def download_countries():
 
     delete_directory(path=path)
 
-    req = requests.get( url=url)
+    req = safe_requests.get( url=url)
     content = req.content
     with open(f'{path}/countries.csv', 'wb') as csv:
         csv.write(content)
